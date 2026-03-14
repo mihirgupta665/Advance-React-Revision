@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import './App.css'
 
 function App() {
-    const [length, setLength] = useState(0)
+    const [length, setLength] = useState(8)
     const [numberAllowed, setNumberAllowed] = useState(false)
     const [charAllowed, setCharAllowed] = useState(false)
     const [password, setPassword] = useState()
@@ -15,13 +15,14 @@ function App() {
 
         for(let i=0; i <= length; i++){
             let char = Math.floor(Math.random() * str.length + 1)
-            pass = str.charAt(char)
+            pass += str.charAt(char)
         }
 
         setPassword(pass)
 
-    }, [length, numberAllowed, charAllowed, setPassword])
+    }, [length, numberAllowed, charAllowed])
 
+    useEffect( () => { passwordGenerator() } , [length, numberAllowed, charAllowed, passwordGenerator])
 
     return (
             <div className="w-full max-w-xl mx-auto my-8 px-5 py-2  rounded-lg shadow-md text-orange-600 bg-gray-700 text-center ">
