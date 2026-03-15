@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useId, useEffect } from "react"
 
 function InputBox({
     label,
@@ -12,6 +12,7 @@ function InputBox({
     className = "",
 }) {
     const amountInputId = useId()
+
 
     return (
         <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>

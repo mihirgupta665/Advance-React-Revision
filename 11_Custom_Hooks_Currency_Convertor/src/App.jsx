@@ -1,4 +1,8 @@
-import { useState } from 'react'
+// function declares where component is called
+//  and where compoenent is created function is passed as prop
+//  where in html or jsx the function need to be called there it is called with the parameters required
+
+import { useState, useEffect } from 'react'
 import './App.css'
 import { InputBox } from "./components/input.js"
 import useCurrencyInfo from "./hooks/useCurrencyInfo.js"
@@ -13,15 +17,18 @@ function App() {
     const options = Object.keys(currencyInfo)
 
     const swap = () => {
-        setTo(from)
+        const temp = from
         setFrom(to)
-        setConvertedAmount(amount)
-        setAmount(convertedAmount)
+        setTo(temp)
+        // setConvertedAmount(amount)
+        // setAmount(convertedAmount)
     }
 
     const convert = () => {
         setConvertedAmount(amount * currencyInfo[to])
     }
+
+    useEffect(() => {convert()}, [to, from, amount, currencyInfo])
 
     return (
         <div
@@ -43,7 +50,7 @@ function App() {
                                 label="From"
                                 amount={amount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency) => setAmount(amount)}
+                                onCurrencyChange={(currency) => setFrom(currency)}      // setFrom(currency) 
                                 selectCurrency={from}
                                 onAmountChange={(amount) => setAmount(amount)}
                             />
@@ -63,7 +70,7 @@ function App() {
                                 amount={convertedAmount}
                                 currencyOptions={options}
                                 onCurrencyChange={(currency) => setTo(currency)}
-                                selectCurrency={from}
+                                selectCurrency={to}   // to
                                 amountDisable
                             />
                         </div>
