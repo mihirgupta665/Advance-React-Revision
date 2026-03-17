@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react"
+import { useLoaderData } from "react-router-dom"
 
-export default function Github(){
+export default function Github() {
 
-    let [data, setData] = useState(null)
+    const data = useLoaderData()
 
-    useEffect(() => {
-        fetch("https://api.github.com/users/mihirgupta665", {
-            headers: {
-                Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`
-            }
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            setData(data)
-        })
-    }, [])
+    // let [data, setData] = useState(null)
 
-    return(
+    // useEffect(() => {
+    //     fetch("https://api.github.com/users/mihirgupta665", {
+    //         headers: {
+    //             Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`
+    //         }
+    //     })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         console.log(data)
+    //         setData(data)
+    //     })
+    // }, [])
+
+    return (
         <div className="m-4 p-4 text-center text-3xl text-white bg-gray-500">
             Github Followers : {data?.followers}
-            <img src={data?.avatar_url} alt="Git Picture" width={300} 
+            <img src={data?.avatar_url} alt="Git Picture" width={300}
             />
         </div>
     )
@@ -28,7 +31,7 @@ export default function Github(){
 
 export const githubInfoData = async () => {
     const response = await fetch("https://api.github.com/users/mihirgupta665", {
-        headers : {
+        headers: {
             Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`
         }
     })

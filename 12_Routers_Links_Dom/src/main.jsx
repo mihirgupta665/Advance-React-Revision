@@ -14,7 +14,7 @@ import Github, { githubInfoData } from './components/Github/Github.jsx'
 // createBrowserRouter : array of router object
 // router object : path, element(to render), children(nested routing)
 
-const router     = createBrowserRouter([
+const router2 = createBrowserRouter([
     {
         path: '/',
         element: <Layout/>,
@@ -38,12 +38,13 @@ const router     = createBrowserRouter([
             {
                 path: "github",
                 element: <Github />
+                
             }
         ]
     }
 ])
 
-const router2 = createBrowserRouter(
+const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Layout />} >
             <Route path="" element={<Home />}/>
