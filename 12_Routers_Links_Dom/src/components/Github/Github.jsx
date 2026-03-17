@@ -25,3 +25,13 @@ export default function Github(){
         </div>
     )
 }
+
+export const githubInfoData = async () => {
+    const response = await fetch("https://api.github.com/users/mihirgupta665", {
+        headers : {
+            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`
+        }
+    })
+
+    return response.json()
+}
