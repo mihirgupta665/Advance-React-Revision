@@ -8,12 +8,13 @@ import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import User from './components/User/user.jsx'
+import Github from './components/Github/Github.jsx'
 
 // RouterProvider : is a functional component which provides routing and takes 1 prop i.e. router
 // createBrowserRouter : array of router object
 // router object : path, element(to render), children(nested routing)
 
-const router = createBrowserRouter([
+const router     = createBrowserRouter([
     {
         path: '/',
         element: <Layout/>,
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: "contact",
                 element: <Contact/>
+            },
+            {
+                path: "user/:userid",
+                element: <User/>
+            },
+            {
+                path: "github",
+                element: <Github />
             }
         ]
     }
@@ -36,11 +45,12 @@ const router = createBrowserRouter([
 
 const router2 = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Layout/>} >
-            <Route path="" element={<Home/>}/>
+        <Route path="/" element={<Layout />} >
+            <Route path="" element={<Home />}/>
             <Route path="about" element={<About/>} />
             <Route path="contact" element={<Contact />} />
             <Route path="user/:userid" element={<User />} />
+            <Route path="github" element={<Github />} />
         </Route>
     )
 )

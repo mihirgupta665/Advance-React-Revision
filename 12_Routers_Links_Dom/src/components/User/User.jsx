@@ -10,10 +10,10 @@ import {useParams} from "react-router-dom"
 
 export default function User(){
 
-    const userid = useParams()
+    const {userid} = useParams()
 
     return(
-        <div>
+        <div className=" text-center text-3xl bg-gray-600 p-4 ">    
             User: {userid}
         </div>
     )
