@@ -6,7 +6,7 @@ function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const {setUser} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)       // value or stored passed in context.provider could be accessed
 
     const handleSubmit = (e) => {
         e.preventDefault()
