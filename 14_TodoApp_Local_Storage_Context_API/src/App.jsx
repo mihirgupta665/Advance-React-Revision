@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { TodoProvider } from "./contexts"
 import {TodoForm, TodoItem} from "./components"
@@ -17,7 +17,7 @@ function App() {
         ))
     }
 
-    const deleteTodo = (id) => { setTodos((prev) => prev.map((todo) => todo.id !== id)) }
+    const deleteTodo = (id) => { setTodos((prev) => prev.filter((todo) => todo.id !== id)) }
 
     const toggleComplete = (id) => {
         setTodos((prev) => prev.map((todo) =>
@@ -32,7 +32,7 @@ function App() {
 
     }, [])
 
-    useEffect(() => {
+    useEffect( () => {
         localStorage.setItem("todos", JSON.stringify(todos))
     }, [todos])
 
