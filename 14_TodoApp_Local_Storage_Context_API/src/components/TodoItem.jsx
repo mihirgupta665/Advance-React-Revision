@@ -34,7 +34,7 @@ function TodoItem({ todo }) {       // { todo } what does it mean does this make
                     } ${todo.completed ? "line-through" : ""}`}
                 value={todoMsg}
                 onChange={(e) => setTodoMsg(e.target.value)}
-                readOnly={!isTodoEditable}
+                readOnly={!isTodoEditable}  // if at run time i click at edit button and editable becomes true then how input will get to know that isTodoEditable is now true and input is editable now
             />
             {/* Edit, Save Button */}
             <button
