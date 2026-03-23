@@ -6,7 +6,9 @@ function App() {
 
     const [todos, setTodos] = useState([])
 
-    const addTodo = (todo) => { setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]) }
+    const addTodo = (todo) => { 
+        setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]) 
+    }
 
     const updatedTodo = (id, todo) => {
         setTodos((prev) => prev.map(
