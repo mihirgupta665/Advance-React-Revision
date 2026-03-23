@@ -1,5 +1,21 @@
-function TodoItem({ todo }) {
+import { useState } from "react";
+import { useTodo } from "../contexts";
 
+
+function TodoItem({ todo }) {       // { todo } what does it mean does this makes a object inside object or it destructure the object or both why we used curly braces
+
+    const {updatedTodo, deleteTodo, toggleComplete} = useTodo()
+    const [isTodoEditable, setIsTodoEditable] = useState("false")
+    const [todoMsg, setTodoMsg] = useState(todo.todo)
+
+    const editTodo = () => {
+        updatedTodo(todo.id, {...todo, todo:todoMsg})
+        setIsTodoEditable(false)
+    }
+
+    const toggleCompleted = () => {
+        toggleComplete(todo.id)
+    }
 
     return (
         <div
